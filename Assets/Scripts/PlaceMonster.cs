@@ -33,5 +33,25 @@ public class PlaceMonster : MonoBehaviour
             AudioSource audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.PlayOneShot(audioSource.clip);
         }
+        else if(CanUpgradeMonster())
+        {
+            monster.GetComponent<MonsterData>().IncreaseLevel();
+
+            AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+            audioSource.PlayOneShot(audioSource.clip);
+        }
+    }
+
+    bool CanUpgradeMonster()
+    {
+        if(monster != null)
+        {
+            MonsterData monsterData = monster.GetComponent<MonsterData>();
+            if(monsterData.GetNextLevel() != null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
