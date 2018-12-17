@@ -32,6 +32,8 @@ public class MoveEnemy : MonoBehaviour
             {
                 currentWaypoint++;
                 lastWaypointSwitchTime = Time.time;
+
+                RotateIntoMoveDirection();
             }
             else
             {
@@ -41,5 +43,18 @@ public class MoveEnemy : MonoBehaviour
                 audioSource.PlayOneShot(audioSource.clip);
             }
         }
+    }
+
+    void RotateIntoMoveDirection()
+    {
+        Vector3 startPosition = waypoints[currentWaypoint].transform.position;
+        Vector3 endPosition = waypoints[currentWaypoint + 1].transform.position;
+        Vector3 direction = endPosition - startPosition;
+
+        // It uses Mathf.Atan2 to determine the angle toward which direction points, in radians, assuming zero points to the right.
+        // Multiplying the result by 180 / Mathf.PI converts the angle to degrees.
+        float rotation = Mathf.Atan2(direction.y, direction.x) * 180 / Mathf.PI;
+
+        gameObject.transform.Find("Sprite").transform.rotation = Quaternion.AngleAxis(rotation, Vector3.forward);
     }
 }
