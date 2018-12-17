@@ -7,7 +7,7 @@ public class MoveEnemy : MonoBehaviour
     public GameObject[] waypoints;
     int currentWaypoint = 0;
     float lastWaypointSwitchTime;
-    float speed = 1.0f;
+    public float speed = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +41,8 @@ public class MoveEnemy : MonoBehaviour
 
                 AudioSource audioSource = gameObject.GetComponent<AudioSource>();
                 audioSource.PlayOneShot(audioSource.clip);
+
+                GameObject.Find("GameManager").GetComponent<GameManagerBehavior>().Health--;
             }
         }
     }
