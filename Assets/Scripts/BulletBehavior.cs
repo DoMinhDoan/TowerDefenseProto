@@ -6,8 +6,23 @@ using System;
 [RequireComponent (typeof (AudioSource))]
 public class BulletBehavior : MonoBehaviour
 {
-    public float speed = 10;
-    public int damage;
+    public BulletConfig bulletConfig;
+
+    private int damage
+    {
+        get
+        {
+            return bulletConfig.damage;
+        }
+    }
+
+    private float speed
+    {
+        get
+        {
+            return bulletConfig.speed;
+        }
+    }
 
     [HideInInspector]
     [NonSerialized]
