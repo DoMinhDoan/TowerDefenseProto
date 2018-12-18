@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[RequireComponent (typeof (AudioSource))]
 public class BulletBehavior : MonoBehaviour
 {
     public float speed = 10;
     public int damage;
+
+    [HideInInspector]
+    [NonSerialized]
     public GameObject target;
+    [HideInInspector]
+    [NonSerialized]
     public Vector3 startPosition;
+    [HideInInspector]
+    [NonSerialized]
     public Vector3 targetPosition;
 
     float distance;
@@ -41,10 +50,7 @@ public class BulletBehavior : MonoBehaviour
                     Destroy(target);
 
                     AudioSource audioSource = gameObject.GetComponent<AudioSource>();
-                    if(audioSource != null)
-                    {
-                        audioSource.PlayOneShot(audioSource.clip);
-                    }
+                    audioSource.PlayOneShot(audioSource.clip);
                 }
             }
 
