@@ -41,7 +41,10 @@ public class BulletBehavior : MonoBehaviour
                     Destroy(target);
 
                     AudioSource audioSource = gameObject.GetComponent<AudioSource>();
-                    audioSource.PlayOneShot(audioSource.clip);
+                    if(audioSource != null)
+                    {
+                        audioSource.PlayOneShot(audioSource.clip);
+                    }
                 }
             }
 
