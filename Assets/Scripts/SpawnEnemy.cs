@@ -62,4 +62,15 @@ public class SpawnEnemy : MonoBehaviour
             go.GetComponent<Animator>().SetBool("gameOver", true);
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        for(int i = 0; i< waypoints.Length - 1; i++)
+        {
+            Gizmos.DrawLine(waypoints[i].transform.position, waypoints[i + 1].transform.position);
+            UnityEditor.Handles.Label(waypoints[i].transform.position, i + "");
+        }
+        UnityEditor.Handles.Label(waypoints[waypoints.Length - 1].transform.position, waypoints.Length - 1 + "");
+    }
 }
