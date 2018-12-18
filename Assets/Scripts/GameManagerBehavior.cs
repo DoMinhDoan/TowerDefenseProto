@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameManagerBehavior : MonoBehaviour
 {
-    public Text goldLabel;
-    public Text waveLabel;
-    public GameObject[] nextWaveLabels;
-    public Text healthLabel;
+    public GameObject goldLabel;
+    public GameObject waveLabel;
+    public GameObject healthLabel;
+
+    public GameObject[] nextWaveLabels;    
     public GameObject[] healthIndicator;
 
     public bool isGameOver = false;
@@ -23,7 +26,7 @@ public class GameManagerBehavior : MonoBehaviour
         set
         {
             gold = value;
-            goldLabel.text = "GOLD: " + gold.ToString();
+            goldLabel.GetComponent<TextMeshPro>().text = "GOLD: " + gold.ToString();
         }
     }
 
@@ -46,7 +49,7 @@ public class GameManagerBehavior : MonoBehaviour
                 }
             }
 
-            waveLabel.text = "WAVE: " + (wave + 1).ToString();
+            waveLabel.GetComponent<TextMeshPro>().text = "WAVE: " + (wave + 1).ToString();
         }
     }
 
@@ -85,7 +88,7 @@ public class GameManagerBehavior : MonoBehaviour
                 }
             }
 
-            healthLabel.text = "HEALTH: " + (health).ToString();
+            healthLabel.GetComponent<TextMeshPro>().text = "HEALTH: " + (health).ToString();
         }
     }
 
