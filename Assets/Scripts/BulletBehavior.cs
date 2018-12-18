@@ -12,11 +12,11 @@ public class BulletBehavior : MonoBehaviour
 
     float distance;
     float startTime;
-    GameManagerBehavior gameManager;
+    //GameManagerBehavior gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManagerBehavior>();
         startTime = Time.time;
         distance = Vector2.Distance(startPosition, targetPosition);
     }
