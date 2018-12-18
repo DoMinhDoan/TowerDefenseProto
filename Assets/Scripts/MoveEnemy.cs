@@ -59,4 +59,17 @@ public class MoveEnemy : MonoBehaviour
 
         gameObject.transform.Find("Sprite").transform.rotation = Quaternion.AngleAxis(rotation, Vector3.forward);
     }
+
+    public float DistanceToGold()
+    {
+        float distance = 0;
+        distance += Vector2.Distance(gameObject.transform.position, waypoints[currentWaypoint].transform.position);
+
+        for(int i = currentWaypoint + 1; i < waypoints.Length - 1; i++)
+        {
+            distance += Vector2.Distance(waypoints[i].transform.position, waypoints[i+1].transform.position);
+        }
+
+        return distance;
+    }
 }
